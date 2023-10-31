@@ -7,49 +7,49 @@
 
 using namespace std;
 
-//Ñ°ÕÒÊý×éµÄÖÐÐÄË÷Òý
+//Ñ°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 int pivotIndex(vector<int>& nums);
 
-//ËÑË÷²åÈëÎ»ÖÃ
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½
 int searchInsert(vector<int>& nums, int target);
 
-//ºÏ²¢Çø¼ä
+//ï¿½Ï²ï¿½ï¿½ï¿½ï¿½ï¿½
 vector<vector<int>> merge(vector<vector<int>>& intervals);
 
-//×î³¤¹«¹²Ç°×º
+//ï¿½î³¤ï¿½ï¿½ï¿½ï¿½Ç°×º
 string longestCommonPrefix(vector<string>& strs);
 
-//Áã¾ØÕó
+//ï¿½ï¿½ï¿½ï¿½ï¿½
 void setZeroes(vector<vector<int>>& matrix);
 
-//·´×ª×Ö·û´®
+//ï¿½ï¿½×ªï¿½Ö·ï¿½ï¿½ï¿½
 void reverseString(vector<char>& s);
 
-//Á½ÊýÖ®ºÍII - ÊäÈëÓÐÐòÊý×é
+//ï¿½ï¿½ï¿½ï¿½Ö®ï¿½ï¿½II - ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 vector<int> twoSum(vector<int>& numbers, int target);
 
-//ÒÆ³ýÔªËØ
+//ï¿½Æ³ï¿½Ôªï¿½ï¿½
 int removeElement(vector<int>& nums, int val);
 
-//Ñî»ÔÈý½Ç
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 vector<vector<int>> generate(int numRows);
 
-//·´×ª×Ö·û´®ÖÐµÄµ¥´Ê III
+//ï¿½ï¿½×ªï¿½Ö·ï¿½ï¿½ï¿½ï¿½ÐµÄµï¿½ï¿½ï¿½ III
 string reverseWords(string s);
 
-//É¾³ýÅÅÐòÊý×éÖÐµÄÖØ¸´Ïî
+//É¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ðµï¿½ï¿½Ø¸ï¿½ï¿½ï¿½
 int removeDuplicates(vector<int>& nums);
 
-//ÈýÊýÖ®ºÍ
+//ï¿½ï¿½ï¿½ï¿½Ö®ï¿½ï¿½
 vector<vector<int>> threeSum(vector<int>& nums);
 
-//³¤¶È×îÐ¡µÄ×ÓÊý×é
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 int minSubArrayLen(int target, vector<int>& nums);
 
-//ËÄÊýÖ®ºÍ
+//ï¿½ï¿½ï¿½ï¿½Ö®ï¿½ï¿½
 vector<vector<int>>fourSum(vector<int>& nums, int target);
 
-//ÓÐÐòÊý×éµÄÆ½·½
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ½ï¿½ï¿½
 vector<int> sortedSquares(vector<int>& nums);
 
 int pivotIndex(vector<int>& nums) 
@@ -86,9 +86,9 @@ vector<vector<int>> merge(vector<vector<int>>& intervals)
 	merged.push_back(intervals[0]);
 
 	for (int i = 0; i < intervals.size(); i++) {
-		int left = intervals[i][0], int right = intervals[i][1];
-		if (merged.back()[1] < left) merged.push_back({ left,right }); //ÈôÇ°Çø¼äµÄÓÒ¶ËµãÐ¡ÓÚºóÇø¼äµÄ×ó¶Ëµã£¬ÔòËµÃ÷Õû¸öºóÇø¼äÔÚÇ°Çø¼äÓÒ²à
-		else merged.back()[1] = max(merged.back()[1], right);          //·´Ö®£¬ÔòÇ°Çø¼äµÄÓÒ¶ËµãÈ¡Á½¸öÇø¼äµÄÓÒ¶ËµãµÄ×î´óÖµ
+		int left = intervals[i][0], right = intervals[i][1];
+		if (merged.back()[1] < left) merged.push_back({ left,right }); //ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò¶Ëµï¿½Ð¡ï¿½Úºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ëµã£¬ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½Ò²ï¿½
+		else merged.back()[1] = max(merged.back()[1], right);          //ï¿½ï¿½Ö®ï¿½ï¿½ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò¶Ëµï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò¶Ëµï¿½ï¿½ï¿½ï¿½ï¿½Öµ
 	}
 	return merged;
 }
@@ -97,7 +97,7 @@ void setZeroes(vector<vector<int>>& matrix)
 {
 	int m = matrix.size();
 	int n = matrix[0].size();
-	vector<int> row(m), col(n);//¸¨Öú¾ØÕórow,col
+	vector<int> row(m), col(n);//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½row,col
 
 	for (int i = 0; i < m; i++) {
 		for (int j = 0; j < n; j++) {
@@ -188,17 +188,17 @@ vector<vector<int>> generate(int numRows)
 string reverseWords(string s) 
 {
 	string ret;
-	int length = s.size(), int i = 0;
+	int length = s.size(), i = 0;
 
 	while (i < length) {
 		int start = i;       
-		while (i < length && s[i] != ' ') i++; //±éÀúÖÁs[i] == ' ';
+		while (i < length && s[i] != ' ') i++; //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½s[i] == ' ';
 		
-        //Ìí¼Ós[i - 1]µ½s[start]µ½retÖÐ(ÔÚ´Ë¹ý³ÌÖÐÊµÏÖµ¥´ÊµÄ·´×ª)
+        //ï¿½ï¿½ï¿½ï¿½s[i - 1]ï¿½ï¿½s[start]ï¿½ï¿½retï¿½ï¿½(ï¿½Ú´Ë¹ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½Öµï¿½ï¿½ÊµÄ·ï¿½×ª)
 		for (int p = start; p < i; p++) 
 			ret.push_back(s[start + i - 1 - p]);
 		
-        //Èôs[i] == ' '; ÒÆ¶¯iÖÁÏÂÒ»Î»ÇÒÔÚÐÂstringÖÐÌí¼Ó¿Õ¸ñ
+        //ï¿½ï¿½s[i] == ' '; ï¿½Æ¶ï¿½iï¿½ï¿½ï¿½ï¿½Ò»Î»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½stringï¿½ï¿½ï¿½ï¿½ï¿½Ó¿Õ¸ï¿½
 		while (i < length && s[i] == ' ') {
 			i++;
 			ret.push_back(' ');
@@ -212,7 +212,7 @@ int removeDuplicates(vector<int>& nums)
 	if (nums.empty()) 
 		return 0;
 
-	int fast = 1, int slow = 1;
+	int fast = 1, slow = 1;
 	while (fast < nums.size()) {
 		if (nums[fast] != nums[fast - 1]) {
 			nums[slow] = nums[fast];
@@ -235,7 +235,7 @@ vector<vector<int>> threeSum(vector<int>& nums)
 		if (nums[i] > 0)
 			return res;
 
-		// È¥ÖØµÚÒ»¸öÊý
+		// È¥ï¿½Øµï¿½Ò»ï¿½ï¿½ï¿½ï¿½
 		if (nums[i] == nums[i - 1])
 			continue;
 
@@ -248,7 +248,7 @@ vector<vector<int>> threeSum(vector<int>& nums)
 				left++;
 				right--;
 
-				// È¥ÖØµÚ¶þ¡¢Èý¸öÊý
+				// È¥ï¿½ØµÚ¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 				while (left < right && nums[right] == nums[right + 1]) {
 					right--;
 				}
@@ -276,10 +276,10 @@ int minSubArrayLen(int target, vector<int>& nums)
 			// update sublength
 			subLength = (j - i + 1);
 			result = result < subLength ? result : subLength;
-			sum -= nums[i++]; // ²»¶Ï±ä¸üi£¨×ÓÐòÁÐµÄÆðÊ¼Î»ÖÃ
+			sum -= nums[i++]; // ï¿½ï¿½ï¿½Ï±ï¿½ï¿½iï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ðµï¿½ï¿½ï¿½Ê¼Î»ï¿½ï¿½
 		}
 	}
-	// ÈôresultÃ»ÓÐ±»¸³Öµ£¬·µ»Ø0
+	// ï¿½ï¿½resultÃ»ï¿½Ð±ï¿½ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½0
 	return result == INT32_MAX ? 0 : result;
 }
 
@@ -288,10 +288,10 @@ vector<vector<int>>fourSum(vector<int>& nums,int target)
 	std::vector<std::vector<int>>result;
 	std::sort(nums.begin(), nums.end());
 	for (int i = 0; i < nums.size(); ++i) {
-		if (i > 0 && nums[i] == nums[i - 1]) //È¥ÖØµÚÒ»¸öÊý£¬×¢Òâ±ß½ç
+		if (i > 0 && nums[i] == nums[i - 1]) //È¥ï¿½Øµï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×¢ï¿½ï¿½ß½ï¿½
 			continue;
 		for (int j = i + 1; j < nums.size(); ++j) {
-			if (j > i + 1 && nums[j] == nums[j - 1]) //È¥ÖØµÚ¶þ¸öÊý
+			if (j > i + 1 && nums[j] == nums[j - 1]) //È¥ï¿½ØµÚ¶ï¿½ï¿½ï¿½ï¿½ï¿½
 				continue;
 			int left = j + 1, right = nums.size() - 1; //leftÈ¡j + 1
 			while (left < right) {
@@ -299,8 +299,8 @@ vector<vector<int>>fourSum(vector<int>& nums,int target)
 				else if (nums[i] + nums[j] + nums[left] + nums[right] > target)	left++;
 				else {
 					result.emplace_back(vector<int>{nums[i] + nums[j] + nums[left] + nums[right]});
-					while (left < right && nums[right] == nums[right - 1]) right--; //È¥ÖØµÚÈý¸öÊý
-					while (left < right && nums[left] == nums[left + 1]) left++;    //È¥ÖØµÚËÄ¸öÊý
+					while (left < right && nums[right] == nums[right - 1]) right--; //È¥ï¿½Øµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+					while (left < right && nums[left] == nums[left + 1]) left++;    //È¥ï¿½Øµï¿½ï¿½Ä¸ï¿½ï¿½ï¿½
 					left++, right--;
 				}
 			}

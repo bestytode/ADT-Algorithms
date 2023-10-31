@@ -141,14 +141,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="BinaryTree.h" />
-    <ClInclude Include="HashTable.h" />
-    <ClInclude Include="ArrayAndString.h" />
-    <ClInclude Include="LinkedList.h" />
-    <ClInclude Include="QueneAndStack.h" />
+    <ClInclude Include="hashtable.h" />
+    <ClInclude Include="array_string.h" />
+    <ClInclude Include="linked_list.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="MyAlgorithms.h" />
+    <ClInclude Include="search_sort.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />

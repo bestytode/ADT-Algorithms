@@ -15,22 +15,16 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="QueneAndStack.h">
+    <ClInclude Include="hashtable.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="BinaryTree.h">
+    <ClInclude Include="linked_list.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="HashTable.h">
+    <ClInclude Include="array_string.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="LinkedList.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="ArrayAndString.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="MyAlgorithms.h">
+    <ClInclude Include="search_sort.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

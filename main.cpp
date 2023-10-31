@@ -1,5 +1,6 @@
 #include <vector>
 #include <iostream>
+#include "search_sort.h"
 
 using namespace std;
 
@@ -26,7 +27,7 @@ vector<vector<int>> generateMatrix(int n)
 
 int main()
 {
-    int n;
+    /*int n;
     std::cout << "input number of matrix to generate" << std::endl;
     std::cin >> n;
 
@@ -36,5 +37,17 @@ int main()
             std::cout << res[i][j] << " ";
         }
         std::cout << std::endl;
-    }
+    }*/
+
+    std::vector vec0 = { 1,5,3,6,7,2,8,9,0,4 };
+    std::vector vec1 = { 1,5,3,6,7,2,8,9,0,4 };
+    std::vector vec2 = { 1,5,3,6,7,2,8,9,0,4 };
+    quickSort(vec0, 0, vec0.size() - 1);
+    for (const auto& number : vec0) 
+        std::cout << number;
+
+    bubbleSort(vec1);
+    for (const auto& number : vec1)
+        std::cout << number;
+
 }
