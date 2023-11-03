@@ -1,53 +1,40 @@
-#include <vector>
-#include <iostream>
-#include "search_sort.h"
+#include "hashtable_seperate_chaining.h"
 
-using namespace std;
+int main() {
+    HashTableSC<std::string, int> hashTable(8);
 
-// LeetCode No.59 spiral matrix (mid)
-vector<vector<int>> generateMatrix(int n)
-{
-    if (n == 1) return vector<vector<int>>{ {1}};
-    if (n == 2) return vector<vector<int>>{ {1, 2}, { 4,3 }};
-    vector<vector<int>>result(n, vector<int>(n, 0));
-    int count = 1;
-    for (int i = 0; i < n - 2; ++i) {
-        for (int j = i; j <= n - 2 - i; j++)
-            result[i][j] = count++;
-        for (int j = i; j <= n - 2 - i; j++)
-            result[j][n - 1 - i] = count++;
-        for (int j = n - 1 - i; j >= i + 1; j--)
-            result[n - 1 - i][j] = count++;
-        for (int j = n - 1 - i; j >= i + 1; j--)
-            result[j][i] = count++;
+    hashTable.insert("apple", 3);
+    hashTable.insert("banana", 2);
+    hashTable.insert("orange", 4);
+    hashTable.insert("mango", 1);
+
+    hashTable.print();
+
+    // Search for an item
+    try {
+        std::cout << "The value for 'apple' is: " << hashTable.search("apple") << std::endl;
     }
-    if (n % 2) result[n / 2][n / 2] = n * n;
-    return result;
-}
+    catch (const std::invalid_argument& e) {
+        std::cout << e.what() << std::endl;
+    }
 
-int main()
-{
-    /*int n;
-    std::cout << "input number of matrix to generate" << std::endl;
-    std::cin >> n;
+    // Remove an item
+    try {
+        hashTable.remove("banana");
+        std::cout << "Removed 'banana' from the hash table." << std::endl;
+    }
+    catch (const std::invalid_argument& e) {
+        std::cout << e.what() << std::endl;
+    }
 
-    vector<vector<int>>res = generateMatrix(n);
-    for (int i = 0; i < res.size(); ++i) {
-        for (int j = 0; j < res[0].size(); ++j) {
-            std::cout << res[i][j] << " ";
-        }
-        std::cout << std::endl;
-    }*/
+    hashTable.print();
 
-	std::vector vec0 = { 1,5,3,6,7,2,8,9,0,4 };
-	std::vector vec1 = { 1,5,3,6,7,2,8,9,0,4 };
-	std::vector vec2 = { 1,5,3,6,7,2,8,9,0,4 };
-    quickSort(vec0, 0, vec0.size() - 1);
-    for (const auto& number : vec0) 
-        std::cout << number;
+    // Example usage with int and double
+    HashTableSC<int, double> hashTableIntDouble(10);
+    hashTableIntDouble.insert(1, 1.1);
+    hashTableIntDouble.insert(2, 2.2);
+    hashTableIntDouble.insert(3, 3.3);
+    hashTableIntDouble.print();
 
-    bubbleSort(vec1);
-    for (const auto& number : vec1)
-        std::cout << number;
-
+    return 0;
 }

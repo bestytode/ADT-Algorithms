@@ -15,17 +15,17 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="hashtable.h">
+    <ClInclude Include="hashtable_algorithm.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="linked_list.h">
+    <ClInclude Include="linkedlist_algorithm.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="array_string.h">
+    <ClInclude Include="array_string_algorithm.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="search_sort.h">
-      <Filter>头文件</Filter>
+    <ClInclude Include="hashtable_seperate_chaining.h">
+      <Filter>源文件</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
