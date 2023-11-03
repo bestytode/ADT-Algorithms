@@ -39,9 +39,9 @@ int main()
         std::cout << std::endl;
     }*/
 
-    std::vector vec0 = { 1,5,3,6,7,2,8,9,0,4 };
-    std::vector vec1 = { 1,5,3,6,7,2,8,9,0,4 };
-    std::vector vec2 = { 1,5,3,6,7,2,8,9,0,4 };
+	std::vector vec0 = { 1,5,3,6,7,2,8,9,0,4 };
+	std::vector vec1 = { 1,5,3,6,7,2,8,9,0,4 };
+	std::vector vec2 = { 1,5,3,6,7,2,8,9,0,4 };
     quickSort(vec0, 0, vec0.size() - 1);
     for (const auto& number : vec0) 
         std::cout << number;
