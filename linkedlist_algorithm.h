@@ -1,28 +1,9 @@
-#pragma once
-
 #include <vector>
 #include <unordered_set>
 
 using namespace std;
 
-//环形链表
-bool hasCycle(ListNode* head);
-
-//反转链表
-ListNode* reverseList(ListNode* head);
-
-//移除链表元素
-struct ListNode* removeElements(struct ListNode* head, int val);
-
-//奇偶链表
-ListNode* oddEvenList(ListNode* head);
-
-//回文链表
-bool isPalindrome(ListNode* head);
-
-// 83.删除排序链表中的重复元素
-ListNode* deleteDuplicates(ListNode* head);
-
+// simple Node struct
 struct ListNode 
 {
 	int val;
@@ -78,7 +59,7 @@ ListNode* removeNthFromEnd(ListNode* head, int n)
 {
 	int length = getLength(head);
 
-    //若要删除的是头节点
+    // to delete head node
 	if (length == n) {
 		head = head->next;
 		return head;
@@ -128,16 +109,16 @@ ListNode* oddEvenList(ListNode* head)
 	if (head == nullptr)
 		return head;
 	
-	ListNode* evenHead = head->next; //偶项链表的头节点
-	ListNode* odd = head; //维护奇项的指针
-	ListNode* even = evenHead;  //维护偶项的指针
+	ListNode* evenHead = head->next; 
+	ListNode* odd = head; 
+	ListNode* even = evenHead;  
 	while (even != nullptr && even->next != nullptr) {
 		odd->next = even->next;
 		odd = odd->next;
 		even->next = odd->next;
 		even = even->next;
 	}
-	odd->next = evenHead; //将最后一个奇项与偶项链表的头节点连接起来
+	odd->next = evenHead; // connect odd to evenhead 
 	return head;
 }
 

@@ -1,56 +1,9 @@
-#pragma once
-
 #include <vector>
 #include <string>
 #include <algorithm>
 #include <numeric>
 
 using namespace std;
-
-//Ѱ���������������
-int pivotIndex(vector<int>& nums);
-
-//��������λ��
-int searchInsert(vector<int>& nums, int target);
-
-//�ϲ�����
-vector<vector<int>> merge(vector<vector<int>>& intervals);
-
-//�����ǰ׺
-string longestCommonPrefix(vector<string>& strs);
-
-//�����
-void setZeroes(vector<vector<int>>& matrix);
-
-//��ת�ַ���
-void reverseString(vector<char>& s);
-
-//����֮��II - ������������
-vector<int> twoSum(vector<int>& numbers, int target);
-
-//�Ƴ�Ԫ��
-int removeElement(vector<int>& nums, int val);
-
-//�������
-vector<vector<int>> generate(int numRows);
-
-//��ת�ַ����еĵ��� III
-string reverseWords(string s);
-
-//ɾ�����������е��ظ���
-int removeDuplicates(vector<int>& nums);
-
-//����֮��
-vector<vector<int>> threeSum(vector<int>& nums);
-
-//������С��������
-int minSubArrayLen(int target, vector<int>& nums);
-
-//����֮��
-vector<vector<int>>fourSum(vector<int>& nums, int target);
-
-//���������ƽ��
-vector<int> sortedSquares(vector<int>& nums);
 
 int pivotIndex(vector<int>& nums) 
 {
@@ -87,8 +40,8 @@ vector<vector<int>> merge(vector<vector<int>>& intervals)
 
 	for (int i = 0; i < intervals.size(); i++) {
 		int left = intervals[i][0], right = intervals[i][1];
-		if (merged.back()[1] < left) merged.push_back({ left,right }); //��ǰ������Ҷ˵�С�ں��������˵㣬��˵��������������ǰ�����Ҳ�
-		else merged.back()[1] = max(merged.back()[1], right);          //��֮����ǰ������Ҷ˵�ȡ����������Ҷ˵�����ֵ
+		if (merged.back()[1] < left) merged.push_back({ left,right }); 
+		else merged.back()[1] = max(merged.back()[1], right);          
 	}
 	return merged;
 }
@@ -97,7 +50,7 @@ void setZeroes(vector<vector<int>>& matrix)
 {
 	int m = matrix.size();
 	int n = matrix[0].size();
-	vector<int> row(m), col(n);//��������row,col
+	vector<int> row(m), col(n);
 
 	for (int i = 0; i < m; i++) {
 		for (int j = 0; j < n; j++) {
@@ -192,13 +145,11 @@ string reverseWords(string s)
 
 	while (i < length) {
 		int start = i;       
-		while (i < length && s[i] != ' ') i++; //������s[i] == ' ';
+		while (i < length && s[i] != ' ') i++; 
 		
-        //����s[i - 1]��s[start]��ret��(�ڴ˹�����ʵ�ֵ��ʵķ�ת)
 		for (int p = start; p < i; p++) 
 			ret.push_back(s[start + i - 1 - p]);
 		
-        //��s[i] == ' '; �ƶ�i����һλ������string�����ӿո�
 		while (i < length && s[i] == ' ') {
 			i++;
 			ret.push_back(' ');
@@ -235,7 +186,6 @@ vector<vector<int>> threeSum(vector<int>& nums)
 		if (nums[i] > 0)
 			return res;
 
-		// ȥ�ص�һ����
 		if (nums[i] == nums[i - 1])
 			continue;
 
@@ -248,7 +198,6 @@ vector<vector<int>> threeSum(vector<int>& nums)
 				left++;
 				right--;
 
-				// ȥ�صڶ���������
 				while (left < right && nums[right] == nums[right + 1]) {
 					right--;
 				}
@@ -267,7 +216,6 @@ int minSubArrayLen(int target, vector<int>& nums)
 	int sum = 0, i = 0;
 	int subLength = 0;
 
-
 	for (int j = 0; j < nums.size(); j++) {
 		sum += nums[j];
 
@@ -276,10 +224,10 @@ int minSubArrayLen(int target, vector<int>& nums)
 			// update sublength
 			subLength = (j - i + 1);
 			result = result < subLength ? result : subLength;
-			sum -= nums[i++]; // ���ϱ��i�������е���ʼλ��
+			sum -= nums[i++]; 
 		}
 	}
-	// ��resultû�б���ֵ������0
+	
 	return result == INT32_MAX ? 0 : result;
 }
 
@@ -288,19 +236,19 @@ vector<vector<int>>fourSum(vector<int>& nums,int target)
 	std::vector<std::vector<int>>result;
 	std::sort(nums.begin(), nums.end());
 	for (int i = 0; i < nums.size(); ++i) {
-		if (i > 0 && nums[i] == nums[i - 1]) //ȥ�ص�һ������ע��߽�
+		if (i > 0 && nums[i] == nums[i - 1]) 
 			continue;
 		for (int j = i + 1; j < nums.size(); ++j) {
-			if (j > i + 1 && nums[j] == nums[j - 1]) //ȥ�صڶ�����
+			if (j > i + 1 && nums[j] == nums[j - 1]) 
 				continue;
-			int left = j + 1, right = nums.size() - 1; //leftȡj + 1
+			int left = j + 1, right = nums.size() - 1; 
 			while (left < right) {
 				if (nums[i] + nums[j] + nums[left] + nums[right] < target) right--;
 				else if (nums[i] + nums[j] + nums[left] + nums[right] > target)	left++;
 				else {
 					result.emplace_back(vector<int>{nums[i] + nums[j] + nums[left] + nums[right]});
-					while (left < right && nums[right] == nums[right - 1]) right--; //ȥ�ص�������
-					while (left < right && nums[left] == nums[left + 1]) left++;    //ȥ�ص��ĸ���
+					while (left < right && nums[right] == nums[right - 1]) right--; 
+					while (left < right && nums[left] == nums[left + 1]) left++;    
 					left++, right--;
 				}
 			}

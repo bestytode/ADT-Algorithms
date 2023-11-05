@@ -7,17 +7,8 @@
 
 // Hash Table with Separate Chaining using a Linked List secondary data structure
 template<typename T, typename Q>
-class HashTableSC {
-private:
-    std::vector<std::list<std::pair<T, Q>>> table;
-    size_t capacity;
-
-    // Hash function to calculate a hash for the key
-    size_t hashFunction(const T& key) {
-        std::hash<T> hasher;
-        return hasher(key) % capacity;
-    }
-
+class HashTableSC 
+{
 public:
     HashTableSC(size_t cap = 8) : capacity(cap), table(cap) {}
 
@@ -63,5 +54,15 @@ public:
             }
         }
         std::cout << std::endl;
+    }
+
+private:
+    std::vector<std::list<std::pair<T, Q>>> table;
+    size_t capacity;
+
+    // Hash function to calculate a hash for the key
+    size_t hashFunction(const T& key) {
+        std::hash<T> hasher;
+        return hasher(key) % capacity;
     }
 };
