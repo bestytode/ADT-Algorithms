@@ -148,7 +148,7 @@
     <ClInclude Include="linkedlist_algorithm.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="hashtable_seperate_chaining.h" />
+    <ClInclude Include="hashtableSC_OA.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />

@@ -5,16 +5,20 @@
 
 using namespace std;
 
-vector<int> twoSum(vector<int>& nums, int target)
+// Function to find all pairs of indices in 'nums' whose values sum up to 'target'.
+std::vector<std::pair<int, int>> twoSum(std::vector<int>& nums, int target)
 {
-    unordered_map<int, int> ret;
+    std::unordered_map<int, int> numToIndex; // key: nums[i], value: index i
+    std::vector<std::pair<int, int>> result; 
     for (int i = 0; i < nums.size(); ++i) {
-        auto it = ret.find(target - nums[i]);
-        if (it != ret.end())       
-            return { it->second, i };
+        auto itr = numToIndex.find(target - nums[i]); 
+        if (itr != numToIndex.end()) // check duplication
+            result.emplace_back(itr->second, i); // Add matching pairs to the result
 
-        ret[nums[i]] = i;
+        numToIndex[nums[i]] = i; // adding key-value to hashtable
     }
+
+    return result;
 }
 
 bool containsDuplicate(vector<int>&nums) 
