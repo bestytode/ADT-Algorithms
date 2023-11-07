@@ -146,6 +146,7 @@
     <ClInclude Include="hashtable_algorithm.h" />
     <ClInclude Include="array_string_algorithm.h" />
     <ClInclude Include="linkedlist_algorithm.h" />
+    <ClInclude Include="RBTree.h" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="hashtableSC_OA.h" />

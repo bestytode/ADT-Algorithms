@@ -1,4 +1,5 @@
 #include "hashtableSC_OA.h"
+#include "RBTree.h"
 
 int main() 
 {
@@ -25,5 +26,21 @@ int main()
     hashTableIntDouble.insert(3, 3.3);
     hashTableIntDouble.print();
 
-    return 0;
+    RBTree<int> tree;
+
+    tree.insert(7);
+    tree.insert(3);
+    tree.insert(18);
+    tree.insert(10);
+    tree.insert(22);
+    tree.insert(8);
+    tree.insert(11);
+    tree.insert(26);
+    tree.insert(2);
+    tree.insert(6);
+    tree.insert(13);
+
+    std::cout << "Inorder traversal: ";
+    tree.inorder();
+    std::cout << std::endl;
 }

@@ -75,7 +75,8 @@ private:
 };
 
 template<typename TKey, typename TValue>
-class HashTableOA {
+class HashTableOA 
+{
 public:
     struct Entry {
         TKey key;
@@ -177,7 +178,8 @@ private:
     }
 
 private:
-    std::vector<std::optional<Entry>> array;
+    // std::optional simplifies tracking of entries' states, optimizing memory and collision logic.
+    std::vector<std::optional<Entry>> array; 
     size_t capacity;
     size_t numElements; // Number of elements currently in the table
     size_t maxLoadFactor;
