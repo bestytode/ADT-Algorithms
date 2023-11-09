@@ -78,7 +78,7 @@ protected:
         rightChild->left = ptr;
         ptr->parent = rightChild;
     }
-
+    
     void rotateRight(Node<T>*& ptr) {
         Node<T>* leftChild = ptr->left;
         ptr->left = leftChild->right;
@@ -93,6 +93,7 @@ protected:
         else if (ptr == ptr->parent->left)
             ptr->parent->left = leftChild;
         else
+
             ptr->parent->right = leftChild;
 
         leftChild->right = ptr;
