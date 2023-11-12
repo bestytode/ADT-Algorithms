@@ -99,14 +99,17 @@ public:
         size_t index = hash(key);
         size_t probeIndex = 0;
 
+        // if probe_index is larger than the capacity, insertion fail
         while (probeIndex < capacity) {
-            auto& entry = array[(index + probeIndex * probingConstant) % capacity];
+            auto& entry = this->array[(index + probeIndex * probingConstant) % capacity];
 
+            // if this entry block is not occupied or has been deleted for new insertion
             if (!entry.occupied || entry.deleted) {
-                entry = Entry{ key, value, true, false };
+                entry = Entry{ key, value, true, false }; // create a new block entry with occupied = true, delete = false
                 ++numElements;
                 return;
             }
+            // update value if already has key
             else if (entry.key == key) {
                 entry.value = value;
                 return;
@@ -126,7 +129,7 @@ public:
             const auto& entry = array[(index + probeIndex * probingConstant) % capacity];
 
             if (!entry.occupied) {
-                return {}; // Equivalent to std::nullopt
+                return std::nullopt; // this block has not been inserted, no search result will be found
             }
             else if (!entry.deleted && entry.key == key) {
                 return entry.value;
@@ -135,7 +138,7 @@ public:
             probeIndex += 1;
         }
 
-        return {}; // Key not found after full probing
+        return std::nullopt; // Key not found after full probing
     }
 
     void remove(const TKey& key) {
@@ -149,7 +152,7 @@ public:
                 return; // Element not found
             }
             else if (!entry.deleted && entry.key == key) {
-                entry.deleted = true;
+                entry.deleted = true; // we simply mark this Entry block as deleted 
                 --numElements;
                 return;
             }
@@ -180,6 +183,8 @@ private:
 private:
     // std::optional simplifies tracking of entries' states, optimizing memory and collision logic.
     std::vector<std::optional<Entry>> array; 
+
+    // a series of numbers that we track for 
     size_t capacity;
     size_t numElements; // Number of elements currently in the table
     size_t maxLoadFactor;
