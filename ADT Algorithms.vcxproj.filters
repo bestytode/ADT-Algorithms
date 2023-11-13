@@ -15,19 +15,19 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="hashtable_algorithm.h">
+    <ClInclude Include="algorithm_questions\hashtable_algorithm.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="linkedlist_algorithm.h">
+    <ClInclude Include="algorithm_questions\linkedlist_algorithm.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="array_string_algorithm.h">
+    <ClInclude Include="algorithm_questions\array_string_algorithm.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="hashtableSC_OA.h">
+    <ClInclude Include="ADT_implementations\hashtableSC_OA.h">
       <Filter>源文件</Filter>
     </ClInclude>
-    <ClInclude Include="RBTree.h">
+    <ClInclude Include="ADT_implementations\RBTree.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

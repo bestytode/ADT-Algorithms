@@ -143,13 +143,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="hashtable_algorithm.h" />
-    <ClInclude Include="array_string_algorithm.h" />
-    <ClInclude Include="linkedlist_algorithm.h" />
-    <ClInclude Include="RBTree.h" />
+    <ClInclude Include="algorithm_questions\hashtable_algorithm.h" />
+    <ClInclude Include="algorithm_questions\array_string_algorithm.h" />
+    <ClInclude Include="algorithm_questions\linkedlist_algorithm.h" />
+    <ClInclude Include="ADT_implementations\RBTree.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="hashtableSC_OA.h" />
+    <ClInclude Include="ADT_implementations\hashtableSC_OA.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />

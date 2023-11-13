@@ -1,5 +1,5 @@
-#include "hashtableSC_OA.h"
-#include "RBTree.h"
+#include "ADT_implementations/hashtableSC_OA.h"
+#include "ADT_implementations/RBTree.h"
 
 int main() 
 {
