@@ -52,7 +52,7 @@ public:
     }
 };
 
-// rbtree implementation
+// red-black tree(RBT) implementation
 template <typename T>
 class RBTree {
 private:
@@ -105,8 +105,10 @@ protected:
         Node<T>* parent = nullptr;
         Node<T>* grandparent = nullptr;
 
-        // if the color of ptr's parent is RED(the same as newly inserted one) the violation occurs
-        while (ptr != root && ptr->color != BLACK && ptr->parent->color == RED) {
+        // Those are the situations that will not occur red-red violation:
+        // 1. ptr itself is root pointer
+        // 2. Either ptr itself color is black or ptr parent's color is black
+        while (ptr != root && ptr->color != BLACK && ptr->parent->color != BLACK) {
             parent = ptr->parent;
             grandparent = parent->parent;
 
@@ -116,18 +118,20 @@ protected:
                 Node<T>* uncle = grandparent->right;
 
                 /* Case : 1
-                   The uncle of ptr is also red
-                   Only Recoloring required */
+                   The uncle of ptr is also red, only Recoloring required */
                 if (uncle != nullptr && uncle->color == RED) {
-                    grandparent->color = RED;
+                    grandparent->color = RED; // The grandparent becomes red to maintain black height.
+
+                    // The parent and uncle become black to fix red-red violations at both branches of the grandparent.
                     parent->color = BLACK;
                     uncle->color = BLACK;
-                    ptr = grandparent;
+
+                    // Move 'ptr' up to the grandparent to check for further violations up the tree.
+                    ptr = grandparent; 
                 }
                 else {
                     /* Case : 2
-                       ptr is right child of its parent
-                       Left-rotation required */
+                       ptr is right child of its parent, left-rotation required */
                     if (ptr == parent->right) {
                         rotateLeft(parent);
                         ptr = parent;
@@ -135,8 +139,7 @@ protected:
                     }
 
                     /* Case : 3
-                       ptr is left child of its parent
-                       Right-rotation required */
+                       ptr is left child of its parent, right-rotation required */
                     rotateRight(grandparent);
                     std::swap(parent->color, grandparent->color);
                     ptr = parent;
@@ -149,8 +152,7 @@ protected:
                 Node<T>* uncle = grandparent->left;
 
                 /* Case : 1
-                   The uncle of ptr is also red
-                   Only Recoloring required */
+                   The uncle of ptr is also red, only Recoloring required */
                 if ((uncle != nullptr) && (uncle->color == RED)) {
                     grandparent->color = RED;
                     parent->color = BLACK;
@@ -159,8 +161,7 @@ protected:
                 }
                 else {
                     /* Case : 2
-                       ptr is left child of its parent
-                       Right-rotation required */
+                       ptr is left child of its parent, right-rotation required */
                     if (ptr == parent->left) {
                         rotateRight(parent);
                         ptr = parent;
@@ -168,8 +169,7 @@ protected:
                     }
 
                     /* Case : 3
-                       ptr is right child of its parent
-                       Left-rotation required */
+                       ptr is right child of its parent, left-rotation required */
                     rotateLeft(grandparent);
                     std::swap(parent->color, grandparent->color);
                     ptr = parent;
