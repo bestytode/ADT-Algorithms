@@ -143,15 +143,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="ADT_imps\binary_heap.h" />
+    <ClInclude Include="ADT_imps\hashtable_open_address.h" />
     <ClInclude Include="algorithm_questions\hashtable_algorithm.h" />
     <ClInclude Include="algorithm_questions\array_string_algorithm.h" />
     <ClInclude Include="algorithm_questions\linkedlist_algorithm.h" />
-    <ClInclude Include="ADT_implementations\RBTree.h" />
+    <ClInclude Include="ADT_imps\rbtree.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ADT_implementations\hashtableSC_OA.h" />
+    <ClInclude Include="ADT_imps\hashtable_seperate_chaining.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ADT_imps\graphs.h" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

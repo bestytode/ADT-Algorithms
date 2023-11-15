@@ -1,3 +1,5 @@
+#pragma once
+
 #include <iostream>
 
 // Node color for rbtree, either red or black

@@ -1,5 +1,6 @@
-#include "ADT_implementations/hashtableSC_OA.h"
-#include "ADT_implementations/RBTree.h"
+#include "ADT_imps/hashtable_open_address.h"
+#include "ADT_imps/hashtable_seperate_chaining.h"
+#include "ADT_imps/rbtree.h"
 
 int main() 
 {

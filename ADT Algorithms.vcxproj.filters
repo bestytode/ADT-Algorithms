@@ -24,15 +24,24 @@
     <ClInclude Include="algorithm_questions\array_string_algorithm.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="ADT_implementations\hashtableSC_OA.h">
+    <ClInclude Include="ADT_imps\hashtable_seperate_chaining.h">
       <Filter>源文件</Filter>
     </ClInclude>
-    <ClInclude Include="ADT_implementations\RBTree.h">
+    <ClInclude Include="ADT_imps\rbtree.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ADT_imps\hashtable_open_address.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ADT_imps\binary_heap.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ADT_imps\graphs.h">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
