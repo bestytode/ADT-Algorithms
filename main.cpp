@@ -1,10 +1,14 @@
+#include <algorithm>
+#include <vector>
+
 #include "ADT_imps/hashtable_open_address.h"
 #include "ADT_imps/hashtable_seperate_chaining.h"
 #include "ADT_imps/rbtree.h"
 
-int main() 
+void test_hash_table_open_address()
 {
-    HashTableSC<std::string, int> hashTable(8);
+    // hash table open address testing
+    HashTableOA<std::string, int> hashTable;
 
     hashTable.insert("apple", 3);
     hashTable.insert("banana", 2);
@@ -12,21 +16,23 @@ int main()
     hashTable.insert("mango", 1);
     hashTable.print();
 
-    // Search for an item
-    std::cout << "The value for 'apple' is: " << *hashTable.search("apple") << std::endl;
+    // Search for an item and check if it exists
+    auto appleValue = hashTable.search("apple");
+    if (appleValue) {
+        std::cout << "The value for 'apple' is: " << *appleValue << std::endl;
+    }
+    else {
+        std::cout << "'apple' not found." << std::endl;
+    }
 
     // Remove an item
     hashTable.remove("banana");
     std::cout << "Removed 'banana' from the hash table." << std::endl;
     hashTable.print();
+}
 
-    // Example usage with int and double
-    HashTableSC<int, double> hashTableIntDouble(10);
-    hashTableIntDouble.insert(1, 1.1);
-    hashTableIntDouble.insert(2, 2.2);
-    hashTableIntDouble.insert(3, 3.3);
-    hashTableIntDouble.print();
-
+void test_red_black_tree()
+{
     RBTree<int> tree;
 
     tree.insert(7);
@@ -44,4 +50,18 @@ int main()
     std::cout << "Inorder traversal: ";
     tree.inorder();
     std::cout << std::endl;
+}
+
+int main() 
+{
+    //test_hash_table_open_address();
+    //test_red_black_tree();
+
+    std::vector<int> v = { 1,2,3,4,5,6,7,8,9,10,12,11,13,14,15 };
+    std::make_heap(v.begin(), v.end());
+    std::cout << "max value: " << v.front() << "\n";
+
+    for (int n : v) {
+        std::cout << n << " ";
+    }
 }

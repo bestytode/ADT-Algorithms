@@ -35,14 +35,14 @@ public:
             auto& entry = this->array[(index + probeIndex * probingConstant) % capacity];
 
             // if this entry block is not occupied or has been deleted for new insertion
-            if (!entry.occupied || entry.deleted) {
+            if (!entry->occupied || entry->deleted) {
                 entry = Entry{ key, value, true, false }; // create a new block entry with occupied = true, delete = false
                 ++numElements;
                 return;
             }
             // update value if already has key
-            else if (entry.key == key) {
-                entry.value = value;
+            else if (entry->key == key) {
+                entry->value = value;
                 return;
             }
 
@@ -59,11 +59,11 @@ public:
         while (probeIndex < capacity) {
             const auto& entry = array[(index + probeIndex * probingConstant) % capacity];
 
-            if (!entry.occupied) {
+            if (!entry->occupied) {
                 return std::nullopt; // this block has not been inserted, no search result will be found
             }
-            else if (!entry.deleted && entry.key == key) {
-                return entry.value;
+            else if (!entry->deleted && entry->key == key) {
+                return entry->value;
             }
 
             probeIndex += 1;
@@ -79,16 +79,24 @@ public:
         while (probeIndex < capacity) {
             auto& entry = array[(index + probeIndex * probingConstant) % capacity];
 
-            if (!entry.occupied) {
+            if (entry->occupied) {
                 return; // Element not found
             }
-            else if (!entry.deleted && entry.key == key) {
-                entry.deleted = true; // we simply mark this Entry block as deleted 
+            else if (!entry->deleted && entry->key == key) {
+                entry->deleted = true; // we simply mark this Entry block as deleted 
                 --numElements;
                 return;
             }
 
             probeIndex += 1;
+        }
+    }
+
+    void print() const
+    {
+        for (const std::optional<Entry>& entry_block : this->array) {
+            if (entry_block)
+                std::cout << "key: " << entry_block->key << " | value:" << entry_block->value << "\n";
         }
     }
 
@@ -105,8 +113,8 @@ private:
         maxLoadFactor = static_cast<size_t>(0.7 * capacity);
 
         for (const auto& optEntry : oldArray) {
-            if (optEntry.occupied && !optEntry.deleted) {
-                insert(optEntry.key, optEntry.value);
+            if (optEntry->occupied && !optEntry->deleted) {
+                insert(optEntry->key, optEntry->value);
             }
         }
     }
@@ -115,9 +123,9 @@ private:
     // std::optional simplifies tracking of entries' states, optimizing memory and collision logic.
     std::vector<std::optional<Entry>> array;
 
-    // a series of numbers that we track for 
+    // tracking variables
     size_t capacity;
-    size_t numElements; // Number of elements currently in the table
+    size_t numElements; // current element number
     size_t maxLoadFactor;
 
     // Linear probing constant
