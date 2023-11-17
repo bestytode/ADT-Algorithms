@@ -32,6 +32,9 @@ public:
 		return root_value;
 	}
 
+	size_t size() const {
+		return NrElements;
+	}
 private:
 	// Maintain heap property by moving the node up
 	void heapify_up(int index) {
@@ -77,4 +80,41 @@ private:
 	size_t NrElements;
 	std::vector<T> heap;
 	Comparator comp;
+};
+
+template<typename T>
+void heap_sort(std::vector<T>& array)
+{
+	BinaryHeap<T> heap;
+	for (const auto& value : array) {
+		heap.insert(value);
+	}
+	for (int i = array.size() - 1; i >= 0; i--) {
+		arr[i] = heap.extract();
+	}
+}
+
+template<typename T, typename Comparator = std::less<T>>
+class PriorityQueue
+{
+public:
+	PriorityQueue(){}
+	
+	void push(T value) {
+		heap.insert(value);
+	}
+
+	T pop() {
+		if (heap.empty())
+			throw std::runtime_error("Priority queue is empty");
+
+		heap.extract();
+	}
+
+	bool empty() const{
+		return heap.size() == 0;
+	}
+
+private:
+	BinaryHeap<T, Comparator> heap;
 };
