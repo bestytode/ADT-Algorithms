@@ -4,6 +4,7 @@
 #include "ADT_imps/hashtable_open_address.h"
 #include "ADT_imps/hashtable_seperate_chaining.h"
 #include "ADT_imps/rbtree.h"
+#include "ADT_imps/binary_heap.h"
 
 void test_hash_table_open_address()
 {
@@ -52,16 +53,27 @@ void test_red_black_tree()
     std::cout << std::endl;
 }
 
+void test_binary_heap()
+{
+    // Create a max-heap
+    BinaryHeap<int, std::less<int>> maxHeap;
+    maxHeap.insert(10);
+    maxHeap.insert(20);
+    maxHeap.insert(15);
+
+    // Create a min-heap
+    BinaryHeap<int, std::greater<int>> minHeap;
+    minHeap.insert(10);
+    minHeap.insert(20);
+    minHeap.insert(15);
+
+    std::cout << "maxHeap extract: " << maxHeap.extract() << " minHeap extract: " << minHeap.extract();
+}
+
 int main() 
 {
     //test_hash_table_open_address();
     //test_red_black_tree();
 
-    std::vector<int> v = { 1,2,3,4,5,6,7,8,9,10,12,11,13,14,15 };
-    std::make_heap(v.begin(), v.end());
-    std::cout << "max value: " << v.front() << "\n";
-
-    for (int n : v) {
-        std::cout << n << " ";
-    }
+    test_binary_heap();
 }
