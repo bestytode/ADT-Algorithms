@@ -68,13 +68,13 @@ void test_binary_heap()
     minHeap.insert(20);
     minHeap.insert(15);
 
-    std::cout << "maxHeap extract: " << maxHeap.extract() << " minHeap extract: " << minHeap.extract();
+    std::cout << "maxHeap extract: " << maxHeap.pop() << " minHeap extract: " << minHeap.pop();
 }
 
 void test_shortest_path_algorithm()
 {
     // Create a graph with 5 vertices
-    AdjList<int> graph(5);
+    AdjList graph(5);
 
     // Add edges to the graph (Edge ID, Source, Destination, Weight)
     graph.addEdge(1, 0, 1, 4);  // Edge from vertex 0 to 1 with weight 4
@@ -83,7 +83,6 @@ void test_shortest_path_algorithm()
     graph.addEdge(4, 1, 3, 7);  // Edge from vertex 1 to 3 with weight 7
     graph.addEdge(5, 2, 3, 3);  // Edge from vertex 2 to 3 with weight 3
     graph.addEdge(6, 3, 4, 5);  // Edge from vertex 3 to 4 with weight 5
-    graph.addEdge(7, 2, 4, 10); // Additional edge from vertex 2 to 4 with weight 10
 
     // Run Dijkstra's algorithm
     auto distances = dijkstraShortestPath(graph, 0);

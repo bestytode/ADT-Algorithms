@@ -1,22 +1,22 @@
-#pragma once
+#ifndef GRAPHS_H
+#define GRAPHS_H
 
 #include <iostream>
 #include <limits>
 #include <functional>
 #include <unordered_map>
+#include <queue>
 #include "binary_heap.h"
 
-template<typename T>
 struct Edge 
 {
     int id;        // Unique identifier for the edge
     int dest;      // Destination vertex of the edge
-    T weight;      // Weight of the edge
+    float weight;  // Weight of the edge
 
-    Edge(int id, int dest, T weight) : id(id), dest(dest), weight(weight) {}
+    Edge(int id, int dest, float weight) : id(id), dest(dest), weight(weight) {}
 };
 
-template<typename T>
 class AdjList 
 {
 public:
@@ -28,7 +28,7 @@ public:
         // adjList[v].push_back(Edge(id, u, w));
     }
 
-    const std::list<Edge<T>>& getAdjList(int vertex) const {
+    const std::list<Edge>& getAdjList(int vertex) const {
         return adjList[vertex];
     }
 
@@ -37,26 +37,71 @@ public:
     }
 
 private:
-    std::vector<std::list<Edge<T>>> adjList; // Adjacency list of edges
+    std::vector<std::list<Edge>> adjList; // Adjacency list of edges
 };
 
-template<typename T>
-std::unordered_map<int, T> dijkstraShortestPath(const AdjList<T>& graph, int start) {
-    PriorityQueue<std::pair<T, int>, std::greater<std::pair<T, int>>> pq;
-    std::unordered_map<int, T> distances;
+struct Compare {
+    bool operator()(const Edge& a, const Edge& b) {
+        return a.weight > b.weight;
+    }
+};
+
+inline std::unordered_map<int, float> dijkstraShortestPath(const AdjList& graph, int start) 
+{
+    //std::priority_queue<Edge, std::vector<Edge>, Compare> pq;
+    //std::unordered_map<int, float> distances;
+    //std::vector<bool> visited(graph.getVertices(), false);
+
+    //// Initialize all distances as infinite
+    //for (int i = 0; i < graph.getVertices(); ++i) {
+    //    distances[i] = std::numeric_limits<float>::infinity();
+    //}
+
+    //// Start with the source vertex
+    //pq.push(Edge(-1, start, 0.0f));
+    //distances[start] = 0.0f;
+
+    //while (!pq.empty()) {
+    //    Edge currentEdge = pq.top();
+    //    pq.pop();
+    //    int u = currentEdge.dest;
+
+    //    if (visited[u]) {
+    //        continue;
+    //    }
+
+    //    visited[u] = true;
+
+    //    for (const Edge& edge : graph.getAdjList(u)) {
+    //        int v = edge.dest;
+    //        float weight = edge.weight;
+
+    //        // Update the distance if a shorter path is found
+    //        if (!visited[v] && distances[u] + weight < distances[v]) {
+    //            distances[v] = distances[u] + weight;
+    //            pq.push(Edge(edge.id, v, distances[v]));
+    //        }
+    //    }
+    //}
+
+    //return distances;
+    PriorityQueue<Edge, Compare> pq;  // Changed to use PriorityQueue
+    std::unordered_map<int, float> distances;
     std::vector<bool> visited(graph.getVertices(), false);
 
-    // Initialize all distances as infinite (max value for T)
+    // Initialize all distances as infinite
     for (int i = 0; i < graph.getVertices(); ++i) {
-        distances[i] = std::numeric_limits<T>::max();
+        distances[i] = std::numeric_limits<float>::infinity();
     }
 
     // Start with the source vertex
-    pq.push({ 0, start });
-    distances[start] = 0;
+    pq.push(Edge(-1, start, 0.0f));
+    distances[start] = 0.0f;
 
     while (!pq.empty()) {
-        int u = pq.pop().second;
+        Edge currentEdge = pq.top();
+        pq.pop();
+        int u = currentEdge.dest;
 
         if (visited[u]) {
             continue;
@@ -64,17 +109,19 @@ std::unordered_map<int, T> dijkstraShortestPath(const AdjList<T>& graph, int sta
 
         visited[u] = true;
 
-        for (const auto& edge : graph.getAdjList(u)) {
+        for (const Edge& edge : graph.getAdjList(u)) {
             int v = edge.dest;
-            T weight = edge.weight;
+            float weight = edge.weight;
 
             // Update the distance if a shorter path is found
             if (!visited[v] && distances[u] + weight < distances[v]) {
                 distances[v] = distances[u] + weight;
-                pq.push({ distances[v], v });
+                pq.push(Edge(edge.id, v, distances[v]));
             }
         }
     }
 
     return distances;
 }
+
+#endif 

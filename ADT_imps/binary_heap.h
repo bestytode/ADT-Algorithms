@@ -1,4 +1,5 @@
-#pragma once
+#ifndef BINARY_HEAP_H
+#define BINARY_HEAP_H
 
 #include <vector>
 #include <stdexcept>
@@ -18,8 +19,15 @@ public:
 		NrElements++;
 	}
 
+	T top() const {
+		if (this->empty())
+			throw std::runtime_error("Heap is empty");
+
+		return heap[0];
+	}
+
 	// Remove the root element and then heapify down
-	T extract() {
+	T pop() {
 		if (heap.empty()) 
 			throw std::runtime_error("Heap is empty");
 
@@ -98,7 +106,7 @@ void heap_sort(std::vector<T>& array)
 		heap.insert(value);
 	}
 	for (int i = array.size() - 1; i >= 0; i--) {
-		array[i] = heap.extract();
+		array[i] = heap.pop();
 	}
 }
 
@@ -112,11 +120,12 @@ public:
 		heap.insert(value);
 	}
 
-	T pop() {
-		if (heap.empty())
-			throw std::runtime_error("Priority queue is empty");
+	T top() const{
+		return heap.top();
+	}
 
-		heap.extract();
+	T pop() {
+		return heap.pop();
 	}
 
 	bool empty() const{
@@ -126,3 +135,5 @@ public:
 private:
 	BinaryHeap<T, Comparator> heap;
 };
+
+#endif
