@@ -43,6 +43,7 @@ private:
 			index = parent(index);
 		}
 	}
+
 	// Maintain heap property by moving the node down
 	void heapify_down(int index) {
 		int size = heap.size();
@@ -64,14 +65,17 @@ private:
 			heapify_down(extreme);
 		}
 	}
+
 	int parent(int index) {
 		if (index == 0) 
 			throw std::out_of_range("Root element has no parent.");
 		return (index - 1) / 2;
 	}
+
 	int leftChild(int index) {
 		return (2 * index) + 1;
 	}
+
 	int rightChild(int index) {
 		return (2 * index) + 2;
 	}
