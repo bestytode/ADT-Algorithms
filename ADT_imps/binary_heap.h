@@ -35,6 +35,10 @@ public:
 	size_t size() const {
 		return NrElements;
 	}
+
+	bool empty() const {
+		return NrElements == 0;
+	}
 private:
 	// Maintain heap property by moving the node up
 	void heapify_up(int index) {
@@ -81,7 +85,7 @@ private:
 	}
 
 private:
-	size_t NrElements;
+	size_t NrElements = 0;
 	std::vector<T> heap;
 	Comparator comp;
 };
@@ -94,7 +98,7 @@ void heap_sort(std::vector<T>& array)
 		heap.insert(value);
 	}
 	for (int i = array.size() - 1; i >= 0; i--) {
-		arr[i] = heap.extract();
+		array[i] = heap.extract();
 	}
 }
 

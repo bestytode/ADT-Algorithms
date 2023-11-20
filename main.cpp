@@ -5,6 +5,7 @@
 #include "ADT_imps/hashtable_seperate_chaining.h"
 #include "ADT_imps/rbtree.h"
 #include "ADT_imps/binary_heap.h"
+#include "ADT_imps/graphs.h"
 
 void test_hash_table_open_address()
 {
@@ -70,10 +71,32 @@ void test_binary_heap()
     std::cout << "maxHeap extract: " << maxHeap.extract() << " minHeap extract: " << minHeap.extract();
 }
 
+void test_shortest_path_algorithm()
+{
+    // Create a graph with 5 vertices
+    AdjList<int> graph(5);
+
+    // Add edges to the graph (Edge ID, Source, Destination, Weight)
+    graph.addEdge(1, 0, 1, 4);  // Edge from vertex 0 to 1 with weight 4
+    graph.addEdge(2, 0, 2, 1);  // Edge from vertex 0 to 2 with weight 1
+    graph.addEdge(3, 1, 2, 2);  // Edge from vertex 1 to 2 with weight 2
+    graph.addEdge(4, 1, 3, 7);  // Edge from vertex 1 to 3 with weight 7
+    graph.addEdge(5, 2, 3, 3);  // Edge from vertex 2 to 3 with weight 3
+    graph.addEdge(6, 3, 4, 5);  // Edge from vertex 3 to 4 with weight 5
+    graph.addEdge(7, 2, 4, 10); // Additional edge from vertex 2 to 4 with weight 10
+
+    // Run Dijkstra's algorithm
+    auto distances = dijkstraShortestPath(graph, 0);
+    for (const auto& distance : distances) {
+        std::cout << "Distance from 0 to " << distance.first << " is " << distance.second << std::endl;
+    }
+}
+
 int main() 
 {
     //test_hash_table_open_address();
     //test_red_black_tree();
 
-    test_binary_heap();
+    //test_binary_heap();
+    test_shortest_path_algorithm();
 }
