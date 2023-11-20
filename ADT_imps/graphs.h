@@ -22,7 +22,7 @@ class AdjList
 public:
     AdjList(int vertices) : adjList(vertices) {}
 
-    void addEdge(int id, int u, int v, int w) {
+    void addEdge(int id, int u, int v, float w) {
         adjList[u].push_back(Edge(id, v, w));
         // For undirected graph, add an edge in the opposite direction as well
         // adjList[v].push_back(Edge(id, u, w));
@@ -48,43 +48,6 @@ struct Compare {
 
 inline std::unordered_map<int, float> dijkstraShortestPath(const AdjList& graph, int start) 
 {
-    //std::priority_queue<Edge, std::vector<Edge>, Compare> pq;
-    //std::unordered_map<int, float> distances;
-    //std::vector<bool> visited(graph.getVertices(), false);
-
-    //// Initialize all distances as infinite
-    //for (int i = 0; i < graph.getVertices(); ++i) {
-    //    distances[i] = std::numeric_limits<float>::infinity();
-    //}
-
-    //// Start with the source vertex
-    //pq.push(Edge(-1, start, 0.0f));
-    //distances[start] = 0.0f;
-
-    //while (!pq.empty()) {
-    //    Edge currentEdge = pq.top();
-    //    pq.pop();
-    //    int u = currentEdge.dest;
-
-    //    if (visited[u]) {
-    //        continue;
-    //    }
-
-    //    visited[u] = true;
-
-    //    for (const Edge& edge : graph.getAdjList(u)) {
-    //        int v = edge.dest;
-    //        float weight = edge.weight;
-
-    //        // Update the distance if a shorter path is found
-    //        if (!visited[v] && distances[u] + weight < distances[v]) {
-    //            distances[v] = distances[u] + weight;
-    //            pq.push(Edge(edge.id, v, distances[v]));
-    //        }
-    //    }
-    //}
-
-    //return distances;
     PriorityQueue<Edge, Compare> pq;  // Changed to use PriorityQueue
     std::unordered_map<int, float> distances;
     std::vector<bool> visited(graph.getVertices(), false);

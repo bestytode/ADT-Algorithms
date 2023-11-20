@@ -244,8 +244,12 @@ public:
         return nullptr; // Value not found
     }
 
+    void remove(T value); // TODO
+
     // Function to do inorder and level order traversals
     void inorder() { inorderHelper(root); }
+
+private:
     void inorderHelper(Node<T>* ptr) {
         if (ptr == nullptr)
             return;
