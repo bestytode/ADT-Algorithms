@@ -40,6 +40,7 @@ private:
     std::vector<std::list<Edge>> adjList; // Adjacency list of edges
 };
 
+// this simple struct makes sure the pq pop the min weight one
 struct Compare {
     bool operator()(const Edge& a, const Edge& b) {
         return a.weight > b.weight;
@@ -48,9 +49,9 @@ struct Compare {
 
 inline std::unordered_map<int, float> dijkstraShortestPath(const AdjList& graph, int start) 
 {
-    PriorityQueue<Edge, Compare> pq;  // Changed to use PriorityQueue
-    std::unordered_map<int, float> distances;
-    std::vector<bool> visited(graph.getVertices(), false);
+    PriorityQueue<Edge, Compare> pq;  // for extract the shortest one in loop
+    std::unordered_map<int, float> distances; // key: id, value: distance
+    std::vector<bool> visited(graph.getVertices(), false); // helper array to prevent multiple visiting
 
     // Initialize all distances as infinite
     for (int i = 0; i < graph.getVertices(); ++i) {

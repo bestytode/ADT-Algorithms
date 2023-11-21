@@ -13,6 +13,7 @@ template <typename T>
 class RBTree;
 
 // Node definition for rbtree, by default RED
+// define both value and color, directing to its left, right and parent
 template <typename T>
 class Node 
 {
@@ -108,10 +109,12 @@ protected:
         Node<T>* parent = nullptr;
         Node<T>* grandparent = nullptr;
 
-        // Those are the situations that will not occur red-red violation:
+        // These are situations that will not occur red-red violation(which will not go into the loop)
         // 1. ptr itself is root pointer
         // 2. Either ptr itself color is black or ptr parent's color is black
         while (ptr != root && ptr->color != BLACK && ptr->parent->color != BLACK) {
+            // Notde: when we enter the loop, the ptr's and ptr parent's color are both red.
+
             parent = ptr->parent;
             grandparent = parent->parent;
 
@@ -141,7 +144,7 @@ protected:
                         parent = ptr->parent;
                     }
 
-                    /* Case : 3
+                    /* Case : 3 ( the subsequent case of case 2)
                        ptr is left child of its parent, right-rotation required */
                     rotateRight(grandparent);
                     std::swap(parent->color, grandparent->color);
