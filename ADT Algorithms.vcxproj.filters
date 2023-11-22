@@ -36,6 +36,9 @@
     <ClInclude Include="ADT_imps\binary_heap.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="algorithm_technics\dynamic_programming.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">

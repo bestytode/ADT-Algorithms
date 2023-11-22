@@ -6,6 +6,7 @@
 #include "ADT_imps/rbtree.h"
 #include "ADT_imps/binary_heap.h"
 #include "ADT_imps/graphs.h"
+#include "algorithm_technics/dynamic_programming.h"
 
 void test_hash_table_open_address()
 {
@@ -97,5 +98,10 @@ int main()
     //test_red_black_tree();
 
     //test_binary_heap();
-    test_shortest_path_algorithm();
+    //test_shortest_path_algorithm();
+
+    std::vector<int> price = { 1, 5, 8, 9, 10, 17, 17, 20, 24, 30 };
+
+    int n = 9; // Length of the rod.
+    std::cout << "Maximum obtainable value is " << cutRod(price, n) << std::endl;
 }
