@@ -51,12 +51,24 @@ struct Compare {
     }
 };
 
+
+// Implements Dijkstra's algorithm to find the shortest paths from a single source node to all other nodes in a graph.
+// The graph is represented as an adjacency list where each edge has a weight of type T.
+// The algorithm uses a priority queue to efficiently determine the next node to process based on the shortest distance.
+//
+// @param graph The graph represented as an adjacency list with weighted edges of type T.
+// @param start The starting node's index from which to calculate shortest paths.
+//
+// @return A map of node indices to their shortest distance from the start node.
+//
+// @tparam T The data type of the weights of the edges, which can be any numeric type (e.g., int, float, double).
 template<typename T>
 inline std::unordered_map<int, float> dijkstraShortestPath(const AdjList<T>& graph, int start) 
 {
-    PriorityQueue<Edge<T>, Compare<T>> pq;  // for extract the shortest one in loop
-    std::unordered_map<int, float> distances; // key: id, value: distance
-    std::vector<bool> visited(graph.getVertices(), false); // helper array to prevent multiple visiting
+    // Priority queue to manage nodes during the search, ensuring the node with the shortest distance is processed next.
+    PriorityQueue<Edge<T>, Compare<T>> pq;  
+    std::unordered_map<int, float> distances; // key: id, value: shortest distance
+    std::vector<bool> visited(graph.getVertices(), false); // helper array to indicate whether visited
 
     // Initialize all distances as infinite
     for (int i = 0; i < graph.getVertices(); ++i) {
@@ -67,31 +79,26 @@ inline std::unordered_map<int, float> dijkstraShortestPath(const AdjList<T>& gra
     pq.push(Edge<T>(-1, start, 0.0f));
     distances[start] = 0.0f;
 
-    // loop will end if no element in priority queue, which means all nodes have been checked
+    // Continue processing nodes until the priority queue is empty.
     while (!pq.empty()) {
-        Edge<T> currentEdge = pq.top(); // current shortest (that's why it's greedy algorithm)
+        Edge<T> currentEdge = pq.top(); // current shortest
         pq.pop();
-        int u = currentEdge.dest;
+        int u = currentEdge.dest; // current node (u)
 
-        if (visited[u]) {
+        // process helper array visited[]
+        if (visited[u]) 
             continue;
-        }
-
         visited[u] = true;
 
-        // check neibors(u) by get all egdes of the current node v
+        // Iterate through the edges of the current node to update distances.
         for (const Edge<T>& edge : graph.getAdjList(u)) {
             int v = edge.dest;
             T weight = edge.weight;
 
-            // Update the distance if a shorter path is found
-            // to understand: 1st iteration: u is start point where distances[start] is 0.0f, 
-            // and distances[v] will be updated anyways
-            // 2nd iteration and later: update only if shorter path is found
-            // finally push v to priority queue for later checking
+            // If an unvisited node 'v' is found with a shorter path from 'u', update its distance.
             if (!visited[v] && distances[u] + weight < distances[v]) {
                 distances[v] = distances[u] + weight;
-                pq.push(Edge<T>(edge.id, v, distances[v]));
+                pq.push(Edge<T>(edge.id, v, distances[v])); // Add 'v' to the queue to process its neighbors later.
             }
         }
     }
