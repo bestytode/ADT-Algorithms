@@ -75,7 +75,7 @@ void test_binary_heap()
 void test_shortest_path_algorithm()
 {
     // Create a graph with 5 vertices
-    AdjList graph(5);
+    AdjList<int> graph(5);
 
     // Add edges to the graph (Edge ID, Source, Destination, Weight)
     graph.addEdge(1, 0, 1, 4);  // Edge from vertex 0 to 1 with weight 4
