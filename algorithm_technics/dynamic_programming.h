@@ -29,8 +29,8 @@ int cutRod(const std::vector<int>& price, int n) {
     for (int i = 1; i <= n; ++i) {
         int max_val = -1;
         for (int j = 0; j < i; ++j)
-            max_val = std::max(max_val, price[j] + value[i - j - 1]);
-        value[i] = max_val;
+            max_val = std::max(max_val, price[j] + value[i - j - 1]); // this is where we use the previous storing value[n]
+        value[i] = max_val; // max for a rod of length i
     }
 
     return value[n];

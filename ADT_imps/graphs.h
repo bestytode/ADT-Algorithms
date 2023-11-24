@@ -6,6 +6,7 @@
 #include <functional>
 #include <unordered_map>
 #include <queue>
+#include <list>
 #include "binary_heap.h"
 
 struct Edge 
