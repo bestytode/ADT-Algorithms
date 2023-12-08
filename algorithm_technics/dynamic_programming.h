@@ -3,9 +3,10 @@
 
 #include <vector>
 
-std::vector<int> memo(1000, -1); // usually global variable, size of 1000 and value of -1.
+std::vector<int> memo(1000, -1); // global variable for dynamic programming
 
-int Fibonacci(int n) {
+int Fibonacci(int n) 
+{
     // If the value has already been computed, return it.
     if (memo[n] != -1) 
         return memo[n];
@@ -21,7 +22,8 @@ int Fibonacci(int n) {
 
 // Returns the best possible price obtainable for a rod of length 'n'
 // and a price array that contains prices of smaller pieces of rod.
-int cutRod(const std::vector<int>& price, int n) {
+int cutRod(const std::vector<int>& price, int n) 
+{
     std::vector<int> value(n + 1);
     value[0] = 0; // No profit for a rod of length 0.
 

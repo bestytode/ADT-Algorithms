@@ -43,7 +43,7 @@ private:
     std::vector<std::list<Edge<T>>> adjList; // Adjacency list of edges
 };
 
-// this simple struct makes sure the pq pop the min weight one
+// simple struct makes sure the priority queue pops the min weight one
 template<typename T>
 struct Compare {
     bool operator()(const Edge<T>& a, const Edge<T>& b) {
