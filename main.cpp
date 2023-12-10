@@ -94,11 +94,11 @@ void test_shortest_path_algorithm()
 
 int main() 
 {
-    //test_hash_table_open_address();
-    //test_red_black_tree();
+    // test_hash_table_open_address();
+    // test_red_black_tree();
 
-    //test_binary_heap();
-    //test_shortest_path_algorithm();
+    // test_binary_heap();
+    // test_shortest_path_algorithm();
 
     std::vector<int> price = { 1, 5, 8, 9, 10, 17, 17, 20, 24, 30 };
 
