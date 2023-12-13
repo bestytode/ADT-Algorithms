@@ -1,3 +1,4 @@
+#include <iostream>
 #include <algorithm>
 #include <vector>
 
@@ -7,6 +8,40 @@
 #include "ADT_imps/binary_heap.h"
 #include "ADT_imps/graphs.h"
 #include "algorithm_technics/dynamic_programming.h"
+
+#include <CGAL/Exact_predicates_inexact_constructions_kernel.h>
+#include <CGAL/Triangle_3.h>
+#include <CGAL/Boolean_set_operations_2/do_intersect.h>
+
+void test_hash_table_open_address();
+void test_red_black_tree();
+void test_shortest_path_algorithm();
+
+using Kernel = CGAL::Exact_predicates_inexact_constructions_kernel;
+using Point_3 = Kernel::Point_3;
+using Triangle_3 = CGAL::Triangle_3<Kernel>;
+
+int main() 
+{
+    // test_hash_table_open_address();
+    // test_red_black_tree();
+    // test_binary_heap();
+    // test_shortest_path_algorithm();
+
+    // std::vector<int> price = { 1, 5, 8, 9, 10, 17, 17, 20, 24, 30 };
+    // int n = 9; // Length of the rod.
+    // std::cout << "Maximum obtainable value is " << cutRod(price, n) << std::endl;
+
+    // Define two triangles in 3D space
+    Triangle_3 triangle1(Point_3(0, 0, 0), Point_3(1, 0, 0), Point_3(0, 1, 0));
+    Triangle_3 triangle2(Point_3(0, 0, 1), Point_3(1, 0, 1), Point_3(0, 1, 1));
+
+    // Check if the two triangles intersect
+    if (CGAL::do_intersect(triangle1, triangle2)) 
+        std::cout << "The triangles intersect." << std::endl;
+    else 
+        std::cout << "The triangles do not intersect." << std::endl;
+}
 
 void test_hash_table_open_address()
 {
@@ -90,18 +125,4 @@ void test_shortest_path_algorithm()
     for (const auto& distance : distances) {
         std::cout << "Distance from 0 to " << distance.first << " is " << distance.second << std::endl;
     }
-}
-
-int main() 
-{
-    // test_hash_table_open_address();
-    // test_red_black_tree();
-
-    // test_binary_heap();
-    // test_shortest_path_algorithm();
-
-    std::vector<int> price = { 1, 5, 8, 9, 10, 17, 17, 20, 24, 30 };
-
-    int n = 9; // Length of the rod.
-    std::cout << "Maximum obtainable value is " << cutRod(price, n) << std::endl;
 }
