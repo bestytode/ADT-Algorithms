@@ -25,7 +25,7 @@ class AdjList
 public:
     AdjList(int vertices) : adjList(vertices) {}
 
-    void addEdge(int id, int u, int v, float w) {
+    void addEdge(int id, int u, int v, T w) {
         adjList[u].push_back(Edge<T>(id, v, w));
         // For undirected graph, add an edge in the opposite direction as well
         // adjList[v].push_back(Edge(id, u, w));
@@ -36,7 +36,7 @@ public:
     }
 
     int getVertices() const {
-        return adjList.size();
+        return (int)adjList.size();
     }
 
 private:
@@ -76,7 +76,7 @@ inline std::unordered_map<int, float> dijkstraShortestPath(const AdjList<T>& gra
     }
 
     // Start with the source vertex
-    pq.push(Edge<T>(-1, start, 0.0f));
+    pq.push(Edge<T>(-1, start, (T)0.0f));
     distances[start] = 0.0f;
 
     // Continue processing nodes until the priority queue is empty.
@@ -98,7 +98,7 @@ inline std::unordered_map<int, float> dijkstraShortestPath(const AdjList<T>& gra
             // If an unvisited node 'v' is found with a shorter path from 'u', update its distance.
             if (!visited[v] && distances[u] + weight < distances[v]) {
                 distances[v] = distances[u] + weight;
-                pq.push(Edge<T>(edge.id, v, distances[v])); // Add 'v' to the queue to process its neighbors later.
+                pq.push(Edge<T>(edge.id, v, (T)distances[v])); // Add 'v' to the queue to process its neighbors later.
             }
         }
     }

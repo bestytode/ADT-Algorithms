@@ -9,6 +9,7 @@ enum NodeColor {
     BLACK
 };
 
+// Forward declaration
 template <typename T>
 class RBTree;
 

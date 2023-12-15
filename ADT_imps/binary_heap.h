@@ -15,7 +15,7 @@ public:
 	// Add key to the heap and then heapify up
 	void insert(T key) {
 		heap.push_back(key);
-		heapify_up(heap.size() - 1);
+		heapify_up((int)heap.size() - 1);
 		NrElements++;
 	}
 
@@ -58,7 +58,7 @@ private:
 
 	// Maintain heap property by moving the node down
 	void heapify_down(int index) {
-		int size = heap.size();
+		int size = (int)heap.size();
 		int left = leftChild(index);
 		int right = rightChild(index);
 
