@@ -98,18 +98,6 @@ private:
 	Comparator comp;
 };
 
-template<typename T>
-void heap_sort(std::vector<T>& array)
-{
-	BinaryHeap<T> heap;
-	for (const auto& value : array) {
-		heap.insert(value);
-	}
-	for (int i = array.size() - 1; i >= 0; i--) {
-		array[i] = heap.pop();
-	}
-}
-
 template<typename T, typename Comparator = std::less<T>>
 class PriorityQueue
 {

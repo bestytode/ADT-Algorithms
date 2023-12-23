@@ -150,6 +150,7 @@
     <ClInclude Include="algorithm_questions\linkedlist_algorithm.h" />
     <ClInclude Include="ADT_imps\rbtree.h" />
     <ClInclude Include="algorithm_technics\dynamic_programming.h" />
+    <ClInclude Include="sorting_algorithms.h" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ADT_imps\hashtable_seperate_chaining.h" />

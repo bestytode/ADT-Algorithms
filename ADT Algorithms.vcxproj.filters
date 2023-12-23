@@ -39,6 +39,9 @@
     <ClInclude Include="algorithm_technics\dynamic_programming.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="sorting_algorithms.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
