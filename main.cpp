@@ -15,6 +15,23 @@ void test_red_black_tree();
 void test_shortest_path_algorithm();
 void test_binary_heap();
 
+int sumThird(const std::vector<int>& xs) {
+    if (xs.empty()) return 0; // Base case for empty list
+    if (xs.size() == 1) return xs[0]; // Base case for single element list
+
+    size_t k = xs.size() / 3; // Determine one-third of the list size
+    int sum = 0;
+
+    // Sum the first third of the list
+    for (size_t i = 0; i < k; ++i) {
+        sum += xs[i];
+    }
+
+    // Recursively call sumThird on the remaining list after the first two-thirds
+    std::vector<int> remaining(xs.begin() + 2 * k, xs.end());
+    return sum + sumThird(remaining);
+}
+
 int main() 
 {
     //test_hash_table_OA();
@@ -25,6 +42,9 @@ int main()
     std::vector<int> price = { 1, 5, 8, 9, 10, 17, 17, 20, 24, 30 };
     int n = 9; // Length of the rod.
     std::cout << "Maximum obtainable value is " << cutRod(price, n) << std::endl;
+
+    std::vector<int> numbers = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+    std::cout << "Sum of thirds: " << sumThird(numbers) << std::endl;
 }
 
 void test_hash_table_OA()

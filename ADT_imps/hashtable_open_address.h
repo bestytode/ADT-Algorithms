@@ -126,7 +126,7 @@ private:
     // tracking variables
     size_t capacity;
     size_t numElements; // current element number
-    size_t maxLoadFactor;
+    size_t maxLoadFactor; // rehash if current number of elements is greater than this
 
     // Linear probing constant
     static constexpr size_t probingConstant = 1;

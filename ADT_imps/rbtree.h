@@ -204,26 +204,31 @@ public:
             while (temp != nullptr) {
                 if (n < temp->value) {
                     if (temp->left == nullptr) {
+                        // found, build pointing relations
                         temp->left = newNode;
                         newNode->parent = temp;
                         break;
                     }
                     else {
+                        // recursively excuting till find appropriate position
                         temp = temp->left;
                     }
                 }
                 else if (n > temp->value) {
                     if (temp->right == nullptr) {
+                        // found, build pointing relations
                         temp->right = newNode;
                         newNode->parent = temp;
                         break;
                     }
                     else {
+                        // recursively excuting till find appropriate position
                         temp = temp->right;
                     }
                 }
                 else {
                     // Equal values are not allowed in BST
+                    std::cout << "Duplicate value '" << n << "' not allowed in BST." << std::endl;
                     return;
                 }
             }
