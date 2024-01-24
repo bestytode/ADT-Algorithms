@@ -64,11 +64,11 @@ private:
 
 		int extreme = index; // Use 'extreme' to generalize for min-heap or max-heap
 
-		if (left < size && comp(heap[extreme], heap[left])) {
+		if (left < size && !comp(heap[extreme], heap[left])) {
 			extreme = left;
 		}
 
-		if (right < size && comp(heap[extreme], heap[right])) {
+		if (right < size && !comp(heap[extreme], heap[right])) {
 			extreme = right;
 		}
 
