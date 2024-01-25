@@ -20,12 +20,22 @@ struct Edge
 };
 
 template<typename T>
+class AdjMatrix
+{
+public:
+
+private:
+    std::vector<std::vector<Edge<T>>> adjMatrix;
+};
+
+template<typename T>
 class AdjList 
 {
 public:
     AdjList(int vertices) : adjList(vertices) {}
 
     void addEdge(int id, int u, int v, T w) {
+        // id = unique identifier for each edge, u = source vertex, v = destination vertex, w = weight
         adjList[u].push_back(Edge<T>(id, v, w));
         // For undirected graph, add an edge in the opposite direction as well
         // adjList[v].push_back(Edge(id, u, w));
@@ -83,7 +93,7 @@ inline std::unordered_map<int, float> dijkstraShortestPath(const AdjList<T>& gra
     while (!pq.empty()) {
         Edge<T> currentEdge = pq.top(); // current shortest
         pq.pop();
-        int u = currentEdge.dest; // current node (u)
+        int u = currentEdge.dest; // current node u, it's the starting node when first time enter loop
 
         // process helper array visited[]
         if (visited[u]) 
