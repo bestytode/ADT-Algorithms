@@ -2,6 +2,7 @@
 #define DYNAMIC_PROGRAMMING_H
 
 #include <vector>
+#include <unordered_map>
 
 std::vector<int> memo(1000, -1); // global variable for dynamic programming
 
@@ -36,6 +37,25 @@ int cutRod(const std::vector<int>& price, int n)
     }
 
     return value[n];
+}
+
+// We use DP to resolve this problem, so typically we need int numbers.
+// If your coins are {0.1, 0.5, 1}, you'd convert them to {1, 5, 10} by multiplying by 10.
+// If your amount is 11.6, you'd convert it to 116 by multiplying by 10.
+int coinChange(std::vector<int>& coins, int amount)
+{
+    std::vector<int> dp(amount + 1, std::numeric_limits<int>::max());
+    dp[0] = 0;
+
+    for (int i = 1; i <= amount; i++) {
+        for (int coin : coins) {
+            if (coin <= i) {
+                dp[i] = std::min(dp[i], dp[i - coin] + 1);
+            }
+        }
+    }
+
+    return dp[amount] == std::numeric_limits<int>::max() ? -1 : dp[amount];
 }
 
 #endif
