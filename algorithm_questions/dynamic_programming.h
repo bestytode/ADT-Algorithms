@@ -47,14 +47,16 @@ int coinChange(std::vector<int>& coins, int amount)
     std::vector<int> dp(amount + 1, std::numeric_limits<int>::max());
     dp[0] = 0;
 
+    // iterate i from 1 to amount
     for (int i = 1; i <= amount; i++) {
+        // for any coin in coins that has less value to the current amount
         for (int coin : coins) {
-            if (coin <= i) {
+            if (coin <= i) 
                 dp[i] = std::min(dp[i], dp[i - coin] + 1);
-            }
         }
     }
 
+    // Check if the amount is achievable. If dp[amount] is still 'infinity', return -1.
     return dp[amount] == std::numeric_limits<int>::max() ? -1 : dp[amount];
 }
 
