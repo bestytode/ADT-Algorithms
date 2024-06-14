@@ -3,7 +3,6 @@
 
 #include <vector>
 #include <stdexcept>
-#include <functional>
 
 template<typename T, typename Comparator = std::less<T>>
 class BinaryHeap
