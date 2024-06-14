@@ -16,6 +16,8 @@ struct ListNode
 	ListNode(int x, ListNode* next) : val(x), next(next) {}
 };
 
+// Time Complexity: O(n), where n is the number of nodes
+// Space Complexity: O(1)
 int getLength(ListNode* head)
 {
 	int length = 0;
@@ -151,4 +153,33 @@ ListNode* deleteDuplicates(ListNode* head)
 			curr = curr->next;
 	}
 	return head;
+}
+
+// Time complexity: O(max(m ,n)), where m and n are the lengths of the two linked lists.
+// Space complexity: O(max(m,n)).
+ListNode* addTwoNumbers(ListNode* l1, ListNode* l2)
+{
+	ListNode* dummyHead = new ListNode(0);
+	ListNode* current = dummyHead;
+
+	int carry = 0; // init carry with 0
+
+	while (l1 || l2) {
+		int x = l1 ? l1->val : 0;
+		int y = l2 ? l2->val : 0;
+		int sum = x + y + carry;
+
+		carry = sum / 10; // if sum > 10, carry will be 1 in the next digit, otherwise will be 0 in the next digit
+		current->next = new ListNode(sum % 10); // sum will only add one digit to current
+		current = current->next;
+
+		if (l1->next) l1 = l1->next;
+		if (l2->next) l2 = l2->next;
+	}
+
+	// if any carry left, add a new digit for it
+	if (carry > 0) current->next = new ListNode(carry);
+
+	// return the 2nd ListNode
+	return dummyHead->next;
 }

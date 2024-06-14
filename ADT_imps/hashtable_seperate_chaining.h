@@ -64,7 +64,7 @@ public:
     }
 
 private:
-    size_t capacity;
+    size_t capacity; // a fixed number of capacity
     std::vector<std::list<std::pair<T, Q>>> table;
 
     // Hash function to calculate a hash for the key
