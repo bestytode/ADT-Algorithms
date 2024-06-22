@@ -14,22 +14,23 @@ template <typename T>
 class RBTree;
 
 // Node definition for rbtree, by default RED
-// define both value and color, directing to its left, right and parent
 template <typename T>
 class Node 
 {
 public:
     T value;
     NodeColor color;
-    Node* left, * right, * parent;
+    Node<T>* left;
+    Node<T>* right;
+    Node<T>* parent;
 
     Node(T value) : value(value), color(RED), left(nullptr), right(nullptr), parent(nullptr) {}
 
     // Helper function to determine if a node is on the left
-    bool isOnLeft() { return this == parent->left; }
+    inline bool isOnLeft() const { return this == parent->left; }
 
     // Returns the sibling of the current node
-    Node* sibling() {
+    inline Node<T>* sibling() const {
         // If no parent, no sibling
         if (parent == nullptr) return nullptr;
 
@@ -39,12 +40,11 @@ public:
     }
 
     // Moves node down and moves given node in its place
-    void moveDown(Node* nParent) {
+    void moveDown(Node<T>* nParent) {
         if (parent != nullptr) {
             if (isOnLeft()) {
                 parent->left = nParent;
-            }
-            else {
+            } else {
                 parent->right = nParent;
             }
         }
@@ -52,8 +52,9 @@ public:
         parent = nParent;
     }
 
-    bool hasRedChild() {
-        return (left != nullptr && left->color == RED) || (right != nullptr && right->color == RED);
+    static bool hasRedChild(Node<T>* node) {
+        return (node->left != nullptr && node->left->color == RED) || 
+               (node->right != nullptr && node->right->color == RED);
     }
 };
 

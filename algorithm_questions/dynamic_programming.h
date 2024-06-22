@@ -60,4 +60,81 @@ int coinChange(std::vector<int>& coins, int amount)
     return dp[amount] == std::numeric_limits<int>::max() ? -1 : dp[amount];
 }
 
+// dp array max_current[i], where i is the size of subarray with max sum.
+// Time complexity: O(n), where n is the size of nums
+// Space complexity: O(1).
+int maxSubArray(std::vector<int>& nums) {
+    if (nums.empty()) return -1;
+    int max_global = nums[0];
+    int max_current = nums[0];
+
+    for (int i = 1; i < nums.size(); i++) {
+        max_current = std::max(nums[i], nums[i] + max_current);
+
+        max_global = max_current > max_global ? max_current : max_global;
+    }
+    return max_global;
+}
+
+int lengthOfLongestSubstring(std::string s) {
+
+    std::unordered_map<char, int> charIndexMap; // key: char, value: index
+    int maxLength = 0;
+    int start = 0;
+
+    for (int end = 1; end < s.length(); end++) {
+        char currentChar = s[end];
+
+        // If the character is found in the map and is within the current window
+        if (charIndexMap.find(currentChar) != charIndexMap.end() &&
+            charIndexMap[currentChar] >= start) {
+            // Move the start to the right of the last occurrence
+            start = charIndexMap[currentChar] + 1;
+        }
+
+        // Update the character's position in the map
+        charIndexMap[currentChar] = end;
+
+        // Calculate the current length and update maxLength if needed
+        maxLength = std::max(maxLength, end - start + 1);
+    }
+
+    return maxLength;
+}
+
+int uniquePathsWithObstacles(std::vector<std::vector<int>>& obstacleGrid) {
+    // m * n matrix
+    int m = obstacleGrid.size();
+    int n = obstacleGrid[0].size();
+
+    // If the starting cell has an obstacle, then return 0 as there are no paths
+    if (obstacleGrid[0][0] == 1) {
+        return 0;
+    }
+
+    // init vector<vector<int>> with height of n, width of m.
+    std::vector<std::vector<int>> dp(m, std::vector(n, 0));
+    dp[0][0] = 1;
+
+    for (int i = 1; i < n; i++) {
+        dp[0][i] = (obstacleGrid[0][i] == 1) ? 0 : dp[0][i - 1];
+    }
+
+    for (int j = 1; j < m; j++) {
+        dp[j][0] = (obstacleGrid[j][0] == 1) ? 0 : dp[j - 1][0];
+    }
+
+    for (int i = 1; i < m; i++) {
+        for (int j = 1; j < n; j++) {
+            if (obstacleGrid[i][j] == 1) {
+                dp[i][j] = 0;
+            }
+            else {
+                dp[i][j] = dp[i - 1][j] + dp[i][j - 1];
+            }
+        }
+    }
+    
+    return dp[m - 1][n - 1];
+}
 #endif
