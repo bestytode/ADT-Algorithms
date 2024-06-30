@@ -1,3 +1,15 @@
+// 2024/7/1
+// Author: Zhenhuan
+// 
+// This has been a truly entertaining algorithmic exploration.
+// The inspiration for this problem came from playing Don't Starve Together.
+// I did not expect it to involve in-depth mathematics, BFS, or even the A* algorithm.
+// 
+// Additionally, many advanced C++ features were utilized, adding to its complexity.
+// This complexity makes it easy for programmers to make mistakes when managing memory.
+//
+// Good luck, future me!
+
 #include <iostream>
 #include <queue>
 #include <tuple>
