@@ -5,14 +5,14 @@
 #include <vector>
 #include <string>
 
-inline void move_one(unsigned int& from, unsigned int& to) {
+inline void move_one(unsigned int& from, unsigned int& to) noexcept {
     if (from >= 1) {
         from--;
         to++;
     }
 }
 
-inline void move_half(unsigned int& from, unsigned int& to) {
+inline void move_half(unsigned int& from, unsigned int& to) noexcept {
     if (from >= 2) {
         int half = (from % 2 == 0) ? from / 2 : (from - 1) / 2;
         from -= half;
@@ -20,14 +20,15 @@ inline void move_half(unsigned int& from, unsigned int& to) {
     }
 }
 
-bool is_goal_state(const std::vector<unsigned int>& stacks, unsigned int target) {
-    for (unsigned int stack : stacks) {
-        if (stack != target) 
-            return false;
-    }
-    return true;
+bool is_goal_state(const std::vector<unsigned int>& stacks, unsigned int target) noexcept {
+	for (unsigned int stack : stacks) {
+		if (stack != target)
+			return false;
+	}
+	return true;
 }
 
+// return the minimum operation count, return -1 if not found.
 int min_operations(unsigned int total_number, unsigned int num_stack, unsigned int target) {
     using namespace std;
 
@@ -44,6 +45,7 @@ int min_operations(unsigned int total_number, unsigned int num_stack, unsigned i
 
     while (!q.empty()) {
         // Get the current state from the front of the queue
+        // Copies the elements to ensure validity after q.pop() is called
         auto [stacks, steps, path] = q.front();
         q.pop();
 
@@ -109,7 +111,7 @@ void run_operations()
     int min_ops = min_operations(total_number, num_stack, target);
 
     if (min_ops != -1) {
-        std::cout << "Minimum operations to achieve " << num_stack << " stacks of " << total_number / num_stack << ": " << min_ops << std::endl;
+        std::cout << "Minimum operations to achieve " << num_stack << " stacks of same number: " << min_ops << std::endl;
     }
     else {
         std::cout << "No solution found." << std::endl;
