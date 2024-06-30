@@ -42,12 +42,15 @@
     <ClInclude Include="sorting_algorithms.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="algorithm_questions\min_operation.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="ADT_imps\graphs.h">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="ADT_imps\graphs.h">
+    <ClCompile Include="main.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

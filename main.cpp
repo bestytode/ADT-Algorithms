@@ -8,6 +8,7 @@
 #include "ADT_imps/binary_heap.h"
 #include "ADT_imps/graphs.h"
 #include "algorithm_questions/dynamic_programming.h"
+#include "algorithm_questions/min_operation.h"
 
 void test_hash_table_OA();
 void test_hash_table_SC();
@@ -22,14 +23,14 @@ int main()
     //test_binary_heap();
     //test_shortest_path_algorithm();
 
-    std::vector<int> price = { 1, 5, 8, 9, 10, 17, 17, 20, 24, 30 };
-    int n = 9; // Length of the rod.
-    std::cout << "Maximum obtainable value is " << cutRod(price, n) << std::endl;
+    //std::vector<int> price = { 1, 5, 8, 9, 10, 17, 17, 20, 24, 30 };
+    //int n = 9; // Length of the rod.
+    //std::cout << "Maximum obtainable value is " << cutRod(price, n) << std::endl;
 
-    std::vector<int>coins = { 1,2,5 };
-    int result = coinChange(coins, 20);
-    std::cout << result;
-
+    //std::vector<int>coins = { 1,2,5 };
+    //int result = coinChange(coins, 20);
+    //std::cout << result;
+    run_operations();
 }
 
 void test_hash_table_OA()
